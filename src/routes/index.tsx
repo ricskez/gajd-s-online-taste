@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroBg from "@/assets/hero-bg.jpg";
-import gallery1 from "@/assets/gallery-1.png";
-import gallery2 from "@/assets/gallery-2.png";
-import gallery3 from "@/assets/gallery-3.png";
-import gallery4 from "@/assets/gallery-4.png";
+
+const heroBg = "https://diningguide.hu/wp-content/uploads/2025/09/credit-szasz-marcell-scaled.jpg";
+const gallery1 = "https://storage.googleapis.com/reservours-images/23f0b3af957b4ddcbceef7d399980c8c";
+const gallery2 = "https://www.minap.hu/sites/default/files/styles/max_1300x1300/public/media/image/2026-01-18-20-45/gajdo-1.jpg.webp?itok=4Ww7f4y-";
+const gallery3 = "https://www.minap.hu/sites/default/files/styles/max_1300x1300/public/media/image/2026-01-18-19-31/gajdo-5.jpg.webp?itok=eqW9xVvX";
+const gallery4 = "https://diningguide.hu/wp-content/uploads/2025/09/555488809-777315138388720-1682371713701558350-n.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -272,10 +273,6 @@ function Hours() {
                   <a href="https://www.facebook.com/61581107567445" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Facebook</a>
                   <a href="https://www.instagram.com/gajdo_miskolc" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Instagram</a>
                 </div>
-              </div>
-              <div>
-                <div className="text-gold text-xs tracking-[0.2em] uppercase mb-1">Megjegyzés</div>
-                <p className="text-sm">Konyhazárás zárás előtt 1 órával</p>
               </div>
             </div>
           </div>
