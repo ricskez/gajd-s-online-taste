@@ -274,10 +274,6 @@ function Hours() {
                   <a href="https://www.instagram.com/gajdo_miskolc" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Instagram</a>
                 </div>
               </div>
-              <div>
-                <div className="text-gold text-xs tracking-[0.2em] uppercase mb-1">Megjegyzés</div>
-                <p className="text-sm">Konyhazárás zárás előtt 1 órával</p>
-              </div>
             </div>
           </div>
         </div>
