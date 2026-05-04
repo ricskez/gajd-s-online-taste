@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import gallery1 from "@/assets/gallery-1.png";
 import gallery2 from "@/assets/gallery-2.png";
@@ -18,15 +17,6 @@ export const Route = createFileRoute("/")({
     ],
   }),
 });
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-};
-
-const stagger = {
-  visible: { transition: { staggerChildren: 0.15 } },
-};
 
 function Index() {
   return (
@@ -79,25 +69,17 @@ function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
       </div>
-      <motion.div
-        className="relative text-center px-6 max-w-3xl"
-        initial="hidden"
-        animate="visible"
-        variants={stagger}
-      >
-        <motion.p variants={fadeUp} className="text-gold tracking-[0.3em] uppercase text-sm mb-4 font-body">
+      <div className="relative text-center px-6 max-w-3xl animate-fade-up">
+        <p className="text-gold tracking-[0.3em] uppercase text-sm mb-4 font-body">
           Powered by Iszkor · Michelin Bib Gourmand
-        </motion.p>
-        <motion.h1
-          variants={fadeUp}
-          className="font-heading text-6xl md:text-8xl font-bold text-cream tracking-wider mb-6"
-        >
+        </p>
+        <h1 className="font-heading text-6xl md:text-8xl font-bold text-cream tracking-wider mb-6">
           GAJDÓ
-        </motion.h1>
-        <motion.p variants={fadeUp} className="text-lg md:text-xl text-foreground/80 font-body leading-relaxed mb-8">
+        </h1>
+        <p className="text-lg md:text-xl text-foreground/80 font-body leading-relaxed mb-8">
           Bar & Food · Miskolc, Nagyavas
-        </motion.p>
-        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="tel:+36307765845"
             className="bg-primary text-primary-foreground px-8 py-3.5 rounded-lg font-medium hover:opacity-90 transition-opacity text-sm tracking-wide"
@@ -110,8 +92,8 @@ function Hero() {
           >
             Ismerd meg a helyet
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -119,28 +101,20 @@ function Hero() {
 function About() {
   return (
     <section id="about" className="py-24 px-6">
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={stagger}
-      >
-        <motion.div variants={fadeUp} className="mb-4">
-          <span className="text-gold tracking-[0.3em] uppercase text-xs">Az Iszkor városi fejezete</span>
-        </motion.div>
-        <motion.h2 variants={fadeUp} className="font-heading text-4xl md:text-5xl font-semibold text-cream mb-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <span className="text-gold tracking-[0.3em] uppercase text-xs">Az Iszkor városi fejezete</span>
+        <h2 className="font-heading text-4xl md:text-5xl font-semibold text-cream mt-4 mb-8">
           Nem fine dining, nem étterem –<br />hanem egy élhető városi hely
-        </motion.h2>
-        <motion.p variants={fadeUp} className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto mb-6">
+        </h2>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto mb-6">
           A Gajdó célja, hogy új színt vigyen Miskolc gasztronómiai életébe: kávézó, borbár, casual bisztró fogások,
           hetente változó ebédmenü, széles barfood kínálat baráti találkozók mellé.
-        </motion.p>
-        <motion.p variants={fadeUp} className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+        </p>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
           Olyan hely, ahol jó lenni és ahol mindig szívesen látnak – akár egy gyors kávéra, akár egy hosszabb vacsorára.
           A Kisavason található étterem a Michelin Bib Gourmand minősítésű Iszkor csapatának új, városi otthona.
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
     </section>
   );
 }
@@ -155,39 +129,29 @@ function Gallery() {
 
   return (
     <section id="gallery" className="py-24 px-6 bg-card/50">
-      <motion.div
-        className="max-w-6xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={stagger}
-      >
-        <motion.div variants={fadeUp} className="text-center mb-16">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
           <span className="text-gold tracking-[0.3em] uppercase text-xs">Ízelítő</span>
           <h2 className="font-heading text-4xl md:text-5xl font-semibold text-cream mt-4">Galéria</h2>
-        </motion.div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {images.map((img, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]"
-            >
+            <div key={i} className="overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]">
               <img
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
 
-const reviews = [
+const reviewsData = [
   {
     name: "Juliet for OnlyOnwards",
     source: "Google",
@@ -214,21 +178,15 @@ const reviews = [
 function Reviews() {
   return (
     <section id="reviews" className="py-24 px-6">
-      <motion.div
-        className="max-w-6xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={stagger}
-      >
-        <motion.div variants={fadeUp} className="text-center mb-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-6">
           <span className="text-gold tracking-[0.3em] uppercase text-xs">Vélemények</span>
           <h2 className="font-heading text-4xl md:text-5xl font-semibold text-cream mt-4">
             Amit vendégeink mondanak
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.div variants={fadeUp} className="flex justify-center gap-8 mb-16 text-center">
+        <div className="flex justify-center gap-8 mb-16 text-center">
           <div>
             <div className="text-3xl font-heading font-bold text-gold">4,8<span className="text-lg text-muted-foreground">/5</span></div>
             <div className="text-sm text-muted-foreground mt-1">Google · 75 értékelés</div>
@@ -238,29 +196,25 @@ function Reviews() {
             <div className="text-3xl font-heading font-bold text-gold">4,6<span className="text-lg text-muted-foreground">/5</span></div>
             <div className="text-sm text-muted-foreground mt-1">DiningCity · 18 értékelés</div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {reviews.map((review, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="bg-card rounded-xl p-8 border border-border/50"
-            >
+          {reviewsData.map((review, i) => (
+            <div key={i} className="bg-card rounded-xl p-8 border border-border/50">
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <span key={j} className={j < review.rating ? "text-gold" : "text-muted"}>★</span>
                 ))}
               </div>
-              <p className="text-foreground/80 leading-relaxed mb-6 text-sm">"{review.text}"</p>
+              <p className="text-foreground/80 leading-relaxed mb-6 text-sm">&ldquo;{review.text}&rdquo;</p>
               <div className="flex items-center justify-between">
                 <span className="text-cream text-sm font-medium">{review.name}</span>
                 <span className="text-muted-foreground text-xs">{review.date}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -278,20 +232,14 @@ const schedule = [
 function Hours() {
   return (
     <section id="hours" className="py-24 px-6 bg-card/50">
-      <motion.div
-        className="max-w-4xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={stagger}
-      >
-        <motion.div variants={fadeUp} className="text-center mb-16">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
           <span className="text-gold tracking-[0.3em] uppercase text-xs">Nyitvatartás & Elérhetőség</span>
           <h2 className="font-heading text-4xl md:text-5xl font-semibold text-cream mt-4">Látogass el hozzánk</h2>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div variants={fadeUp}>
+          <div>
             <h3 className="font-heading text-2xl text-cream mb-6">Nyitvatartás</h3>
             <div className="space-y-3">
               {schedule.map((s) => (
@@ -303,9 +251,9 @@ function Hours() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUp}>
+          <div>
             <h3 className="font-heading text-2xl text-cream mb-6">Elérhetőség</h3>
             <div className="space-y-6 text-foreground/80">
               <div>
@@ -321,22 +269,8 @@ function Hours() {
               <div>
                 <div className="text-gold text-xs tracking-[0.2em] uppercase mb-1">Közösségi média</div>
                 <div className="flex gap-4">
-                  <a
-                    href="https://www.facebook.com/61581107567445"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-cream transition-colors"
-                  >
-                    Facebook
-                  </a>
-                  <a
-                    href="https://www.instagram.com/gajdo_miskolc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-cream transition-colors"
-                  >
-                    Instagram
-                  </a>
+                  <a href="https://www.facebook.com/61581107567445" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Facebook</a>
+                  <a href="https://www.instagram.com/gajdo_miskolc" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Instagram</a>
                 </div>
               </div>
               <div>
@@ -344,9 +278,9 @@ function Hours() {
                 <p className="text-sm">Konyhazárás zárás előtt 1 órával</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
